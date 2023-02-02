@@ -18,6 +18,9 @@ on:
         required: false
         type: boolean
 
+env:
+  TZ: Asia/Shanghai
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -48,6 +51,7 @@ jobs:
       - name: Checkout Source Code
         if: ${{ env.commit }}
         run: |
+          sudo timedatectl set-timezone "$TZ"
           git clone ${{ env.upStream }} TVBoxOSC
           cd TVBoxOSC
           git checkout ${{ env.commit }}
