@@ -137,6 +137,7 @@ jobs:
         uses: ncipollo/release-action@v1
         if: ${{ env.commit }}
         with:
+          token: ${{ secrets.ACTIONS_KEY }}
           name: ${{ env.tag }}-${{ matrix.userName }}
           tag: ${{ env.tag }}-${{ matrix.userName }}
           bodyFile: TVBoxOSC/apk/${{ matrix.userName }}-Release.log
@@ -145,5 +146,3 @@ jobs:
           artifacts: |
             TVBoxOSC/apk/*.apk
             TVBoxOSC/source-${{ env.commitS }}.*
-        env:
-          GITHUB_TOKEN: ${{ secrets.ACTIONS_KEY }}
