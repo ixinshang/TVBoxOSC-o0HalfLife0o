@@ -1,12 +1,16 @@
-name: Test-auto
+name: Test
 
 on:
   schedule:
-    - cron: 23 */2 * * *
+    - cron: 2 */3 * * *
   workflow_dispatch:
     inputs:
       rebuild:
         description: '忽略构建记录以重新构建'
+        required: false
+        type: boolean
+      donotpublish:
+        description: '构建后不提交发布新版'
         required: false
         type: boolean
       testOption:
@@ -126,6 +130,7 @@ jobs:
           path: |
             TVBoxOSC/apk/*
       - name: Whether Or Not to Publish
+        if: ${{ inputs.donotpublish && env.commit }}
         run: |
           echo "commit=" >> $GITHUB_ENV
       - name: Release and Upload Assets
