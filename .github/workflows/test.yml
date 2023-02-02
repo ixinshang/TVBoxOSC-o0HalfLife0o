@@ -140,8 +140,8 @@ jobs:
         with:
           name: ${{ env.tag }}_${{ matrix.userName }}
           tag_name: ${{ env.tag }}_${{ matrix.userName }}
-#          bodyFile: TVBoxOSC/apk/${{ matrix.userName }}-Release.log
-          bodyFile: TVBoxOSC/Changelog.txt
+#         bodyFile: TVBoxOSC/apk/${{ matrix.userName }}-Release.log
+#          bodyFile: TVBoxOSC/Changelog.txt
           files: |
             TVBoxOSC/apk/*.apk
             TVBoxOSC/source-${{ env.commitS }}.*
