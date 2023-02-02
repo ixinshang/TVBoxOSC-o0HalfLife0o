@@ -1,4 +1,4 @@
-name: Test
+name: Test-测试
 
 on:
   schedule:
@@ -133,17 +133,16 @@ jobs:
         if: ${{ inputs.donotpublish && env.commit }}
         run: |
           echo "commit=" >> $GITHUB_ENV
-# Test
-      - name: Release App
-        uses: softprops/action-gh-release@v1
+      - name: Release and Upload Assets
+        uses: ncipollo/release-action@v1
         if: ${{ env.commit }}
         with:
-          name: ${{ env.tag }}_${{ matrix.userName }}
-          tag_name: ${{ env.tag }}_${{ matrix.userName }}
+          name: ${{ env.tag }}
+          tag: ${{ env.tag }}
           bodyFile: TVBoxOSC/apk/${{ matrix.userName }}-Release.log
-#          bodyFile: TVBoxOSC/Changelog.txt
+          allowUpdates: true
+          removeArtifacts: true
+#          artifacts: |
           files: |
             TVBoxOSC/apk/*.apk
             TVBoxOSC/source-${{ env.commitS }}.*
-        env:
-          GITHUB_TOKEN: ${{ secrets.ACTIONS_KEY }}
