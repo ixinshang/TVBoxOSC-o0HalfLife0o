@@ -2,7 +2,7 @@ name: Test-backup
 
 on:
   schedule:
-    - cron: 15,45 0-18,22-23 * * *
+    - cron: 2 3 * * *
   workflow_dispatch:
     inputs:
       rebuild:
