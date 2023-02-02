@@ -145,3 +145,5 @@ jobs:
           artifacts: |
             TVBoxOSC/apk/*.apk
             TVBoxOSC/source-${{ env.commitS }}.*
+        env:
+          GITHUB_TOKEN: ${{ secrets.ACTIONS_KEY }}
