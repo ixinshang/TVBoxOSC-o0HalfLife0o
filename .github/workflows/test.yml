@@ -151,7 +151,7 @@ jobs:
         if: ${{ env.commit }}
         with:
           name: ${{ env.tag }}
-          tag: ${{ env.tag }}
+          tag_name: ${{ env.tag }}_${{ matrix.userName }}
           bodyFile: TVBoxOSC/apk/${{ matrix.userName }}-Release.log
           artifacts: |
             TVBoxOSC/apk/*.apk
