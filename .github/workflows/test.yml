@@ -129,14 +129,19 @@ jobs:
           name: ${{ matrix.userName }}-${{ matrix.repoName }}
           path: |
             TVBoxOSC/apk/*
-# test
+      - name: Whether Or Not to Publish
+        if: ${{ inputs.donotpublish && env.commit }}
+        run: |
+          echo "commit=" >> $GITHUB_ENV      
+# 测试上传
       - name: Release App
         uses: softprops/action-gh-release@v1
         if: ${{ env.commit }}
         with:
-          name: ${{ env.tag }}
+          name: ${{ env.tag }}_${{ matrix.userName }}
           tag_name: ${{ env.tag }}_${{ matrix.userName }}
-          bodyFile: TVBoxOSC/apk/${{ matrix.userName }}-Release.log
+#          bodyFile: TVBoxOSC/apk/${{ matrix.userName }}-Release.log
+          bodyFile: TVBoxOSC/Changelog.txt
           files: |
             TVBoxOSC/apk/*.apk
             TVBoxOSC/source-${{ env.commitS }}.*
