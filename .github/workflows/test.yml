@@ -130,12 +130,12 @@ jobs:
           path: |
             TVBoxOSC/apk/*
       - name: Whether Or Not to Publish
-#        if: ${{ inputs.donotpublish && env.commit }}
+        if: ${{ inputs.donotpublish && env.commit }}
         run: |
           echo "commit=" >> $GITHUB_ENV
       - name: Release and Upload Assets
         uses: ncipollo/release-action@v1
-#        if: ${{ env.commit }}
+        if: ${{ env.commit }}
         with:
           name: ${{ env.tag }}
           tag: ${{ env.tag }}
