@@ -135,7 +135,7 @@ jobs:
           echo "commit=" >> $GITHUB_ENV
       - name: Release and Upload Assets
         uses: ncipollo/release-action@v1
-        if: ${{ env.commit }}
+#        if: ${{ env.commit }}
         with:
           name: ${{ env.tag }}
           tag: ${{ env.tag }}
