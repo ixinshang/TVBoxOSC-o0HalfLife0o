@@ -172,4 +172,4 @@ jobs:
         run: |
           python3 .github/scripts/lzy_web.py \
           "TVBoxOSC/apk/TVBox_${{ matrix.userName }}_${{ env.tag }}.apk" "$lanzou_folder_id"
-          echo "share address: https://wwaq.lanzoum.com/b047o8kuj  password:5bl9"   
+          echo "share address: https://wwaq.lanzoum.com/b047o8kuj  password:5bl9"
