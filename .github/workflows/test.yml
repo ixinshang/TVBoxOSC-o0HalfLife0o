@@ -20,6 +20,14 @@ on:
 
 env:
   TZ: Asia/Shanghai
+  ### 测试增加上传至蓝奏云 ###
+  local_xwalk: ${{ secrets.LOCAL_XWALK }}
+  # 登录蓝奏云后在控制台运行document.cookie
+  ylogin: ${{ secrets.YLOGIN }}
+  phpdisk_info: ${{ secrets.PHPDISK_INFO }}
+  # 蓝奏云里的文件夹ID（TVBoxOS:5848262）
+  lanzou_folder_id: -1
+  ### 测试增加上传至蓝奏云 ###
 
 jobs:
   build:
@@ -156,4 +164,11 @@ jobs:
 # Test Push
       - name: Push to master
         if: ${{ env.commit }}
-        run: curl 'https://push.showdoc.com.cn/server/api/push/${{ secrets.SHOWPUSH_KEY }}?title=Actions_Tvbox%E7%BC%96%E8%AF%91-${{ matrix.userName }}&content=%E6%9C%AC%E6%AC%A1%E7%BC%96%E8%AF%91%E5%B7%B2%E5%AE%8C%E6%88%90-${{ env.FILE_DATE }}\n${{ env.tag }}'
+        run: curl 'https://push.showdoc.com.cn/server/api/push/${{ secrets.SHOWPUSH_KEY }}?title=Actions_Tvbox%E7%BC%96%E8%AF%91-${{ matrix.userName }}&content=%E6%9C%AC%E6%AC%A1%E7%BC%96%E8%AF%91%E5%B7%B2%E5%AE%8C%E6%88%90-${{ env.FILE_DATE }}%EF%BC%8C%E6%BA%90%E7%A0%81%E7%89%88%E6%9C%AC-${{ env.tag }}%E3%80%82'
+# Push To Lanzou
+      - name: Upload App To Lanzou
+        if: ${{ env.commit && env.ylogin }}
+        run: |
+          python3 ${{ github.workspace }}/actions/.github/scripts/lzy_web.py \
+          "${{ github.workspace }}/TVBoxOSC/apk/TVBox_${{ matrix.userName }}_${{ env.tag }}.apk" "$lanzou_folder_id"
+          echo "share address: https://wwaq.lanzoum.com/b047o8kuj  password:5bl9"   
