@@ -1,8 +1,8 @@
 name: Test-Backup
 
 on:
-  schedule:
-    - cron: 23 */3 * * *
+#  schedule:
+#    - cron: 23 */3 * * *
   workflow_dispatch:
     inputs:
       rebuild:
