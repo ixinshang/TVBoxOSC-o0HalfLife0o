@@ -156,4 +156,4 @@ jobs:
 # Test Push
       - name: Push to master
         if: ${{ env.commit }}
-        run: https://push.showdoc.com.cn/server/api/push/${{ secrets.SHOWPUSH_KEY }}?title=Actions_Tvbox%E7%BC%96%E8%AF%91&content=%E6%9C%AC%E6%AC%A1%E7%BC%96%E8%AF%91%E5%B7%B2%E5%AE%8C%E6%88%90-${{ env.FILE_DATE }}           
+        run: curl 'https://push.showdoc.com.cn/server/api/push/${{ secrets.SHOWPUSH_KEY }}?title=Actions_Tvbox%E7%BC%96%E8%AF%91&content=%E6%9C%AC%E6%AC%A1%E7%BC%96%E8%AF%91%E5%B7%B2%E5%AE%8C%E6%88%90-${{ env.FILE_DATE }}'
