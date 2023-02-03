@@ -25,8 +25,8 @@ env:
   # 登录蓝奏云后在控制台运行document.cookie
   ylogin: ${{ secrets.YLOGIN }}
   phpdisk_info: ${{ secrets.PHPDISK_INFO }}
-  # 蓝奏云里的文件夹ID（TVBoxOS:5848262）
-  lanzou_folder_id: -1
+  # 蓝奏云里的文件夹ID（TVBoxOS:6946659）
+  lanzou_folder_id: 6946659
   ### 测试增加上传至蓝奏云 ###
 
 jobs:
