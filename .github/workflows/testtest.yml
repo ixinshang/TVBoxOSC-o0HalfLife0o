@@ -181,8 +181,8 @@ jobs:
           rm -rf TVBoxOSC
           sed -i '/url =/d' ./.git/config
           git config --local user.name "github-actions[bot]"
-          git config --local user.email "418safsaf82+github-actions[bot]@users.noreply.github.com"
-          git remote set-url --add origin "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git remote set-url --add origin "https://${{ github.actor }}:${{ secrets.ACTIONS_KEY }}@github.com/${{ github.repository }}"
           git pull --rebase
           sed -i "/${{ matrix.userName }}\/${{ matrix.repoName }}/s#Updated: [a-zA-Z0-9]*#Updated: ${{ env.commit }}#" README.md
           git add --all
