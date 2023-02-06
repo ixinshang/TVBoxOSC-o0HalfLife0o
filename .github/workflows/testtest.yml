@@ -1,4 +1,4 @@
-name: Test-正式测试
+name: Test-New
 
 on:
   schedule:
